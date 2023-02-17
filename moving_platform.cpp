@@ -68,7 +68,7 @@ void AIMS::MovingPlatform::uniform_motion(double x, double y, double z, int tota
 		accumulated_delta_t += delta_t;
 		_vector_pub.publish(vector);
 
-		if (delta_t >= total_t) { // double >= int -> true;
+		if (accumulated_delta_t >= total_t) { // double >= int -> true;
 			ROS_INFO("Moving Platform is arrived at the final position of trajectory!!");
 			ros::shutdown();
 		}
