@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "geometry_msgs/Vecotr3"
+#include "geometry_msgs/Vecotr3.h"
 
 
 void trajectory_callback(const geometry_msgs::Vector3::ConstPtr *msg)

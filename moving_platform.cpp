@@ -7,7 +7,7 @@
 
 // Declaration 
 namespace AIMS {
-	Class MovingPlatform {
+	class MovingPlatform {
 		/*움직이는 플랫폼을 표현한다.
 
 		  물체의 좌표는 드론의 이륙지점을 원점으로 하는 좌표계를 기준으로 한다.
