@@ -48,9 +48,10 @@ void AIMS::MovingPlatform::uniform_motion(double x, double y, double z, int tota
 	 */
 
 	double vel_x, vel_y, vel_z;
+	double inverse_total_t;
 
 	if (total_t != 0) {
-		double inverse_total_t = (double) 1 / total_t;
+		inverse_total_t = (double) 1 / total_t;
 	}
 
 	vel_x = (x - _x) * inverse_total_t;
