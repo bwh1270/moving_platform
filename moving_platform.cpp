@@ -16,6 +16,7 @@ namespace AIMS {
 			MovingPlatform();
 			void start_position(double x, double y, double z);
 			void uniform_motion(double x, double y, double z, int total_t);
+			void uniform_accelerated_motion(double x, double y, double z, double acc, int total_t);
 
 		private:
 			ros::NodeHandle _nh;
@@ -42,13 +43,22 @@ void AIMS::MovingPlatform::start_position(double x, double y, double z)
 
 void AIMS::MovingPlatform::uniform_motion(double x, double y, double z, int total_t)
 {
-	/* input -> final position of trajectory
+	/* This function is for the uniform motion of the vehicle. 
+	
+	   arguments:
+	   - x, y, z: final position of trajectory
+	   - total_x: total time from start to end
 	 */
 	double vel_x, vel_y, vel_z;
 	double inverse_total_t;
 
 	if (total_t != 0) {
 		inverse_total_t = (double) 1 / total_t;
+	}
+	else {
+		ROS_INFO("total time is zero!");
+		ROS_INFO("make sure the total time of a tracjectory");
+		return 1;
 	}
 	vel_x = (x - _x) * inverse_total_t;
 	vel_y = (y - _y) * inverse_total_t;
@@ -76,6 +86,36 @@ void AIMS::MovingPlatform::uniform_motion(double x, double y, double z, int tota
 		rate.sleep();
 	}
 }
+
+
+void AIMS::MovingPlatform::uniform_accelerated_motion(double x, double y, double z, double acc, int acc_t, int total_t)
+{
+	/* This function is for the uniform accelerated motion of the vehicle. (initial velocity is zero)
+	
+	   arguments:
+	   - x, y, z: final destination of trajectory 
+	   - acc: amount of acc will be as same as decreasing velocity to zero.
+	   - acc_t: accelerating time
+	   - total_t: total time from start to end
+	 */
+	double current_x, current_y, current_z;
+	int accumulated_time = 0;
+	start_position(current_x, current_y, current_z);
+
+	// accelerating interval
+	
+
+	// uniform velocity interval
+	
+
+	// deaccelerating interval
+
+
+
+
+
+
+
 
 
 int main(int argc, char** argv)
